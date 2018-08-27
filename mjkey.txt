@@ -1,0 +1,21 @@
+MuJoCo Pro Lab license activation key, number 6388, type 6.
+
+Issued to Deep Reinforcement Learning Class, UC Berkeley.
+
+Expires December 31, 2018.
+
+Do not share this file with anyone other than the users covered
+by your license agreement with Roboti LLC. This file activates
+MuJoCo Pro on any computer running any supported OS.
+
+Do not modify this file. Its entire content, including the
+plain text section, is used by the activation manager.
+
+67ebc0ee45383fa9a8954ba7378e480382d2a5fd257ba986a0bd854e551e5210
+55e66354bad7f4b48e42863579661b632a3ee14f622458c7908841b27c79ed9d
+52e37c6753b1235f59f4417fa2ce557f08c7ed62d96a1f5459fa11753d492bf4
+0f3ac3e3bdf4f6651454cec789f1a3c19ff855de279b5d8e668bc19c9281bbd2
+e8be8235c0a06992bcec7ab5a5e5e6be057817ef961eb802751c3de64eef3902
+0d7242b701f24a8f0c14fbd723bcfb0eee2f7cf0cdb2ff38b9972f040e98e981
+97aa76e239c7e9e8325361cc528bda36796fb57686f63a88514853e4c9893097
+0cd68ada376d99cd39e4c8753ac2a61888cf17b170ecb6ace9660d0df1536c79
