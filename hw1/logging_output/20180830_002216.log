@@ -1,0 +1,69 @@
+2018-08-30 00:22:17,978 INFO 
+==============================solving section 2 =======================================
+
+2018-08-30 00:22:17,978 INFO 
+==============================running question 2.2======================================
+
+2018-08-30 00:22:19,420 WARNING From C:\G_project\Berkeley-CS-294\hw1\tf_util.py:91: all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Please use tf.global_variables instead.
+2018-08-30 00:22:19,435 WARNING From C:\Python36\lib\site-packages\tensorflow\python\util\tf_should_use.py:118: initialize_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.variables_initializer` instead.
+2018-08-30 00:22:47,371 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:22:47,418 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 00:22:47,433 INFO 
+==============================running question 2.3======================================
+
+2018-08-30 00:22:47,433 INFO 
+==============================testing hyperparam learning rate======================================
+
+2018-08-30 00:23:20,161 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:23:20,286 INFO behavioral_cloning.py: learning_rate-0.01 finished successfully!
+2018-08-30 00:23:44,211 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:23:44,227 INFO behavioral_cloning.py: learning_rate-1e-06 finished successfully!
+2018-08-30 00:23:44,243 INFO 
+==============================testing hyperparam epochs======================================
+
+2018-08-30 00:24:06,567 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:24:06,598 INFO behavioral_cloning.py: epochs-1 finished successfully!
+2018-08-30 00:25:03,176 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:25:03,442 INFO behavioral_cloning.py: epochs-50 finished successfully!
+2018-08-30 00:25:03,458 INFO 
+==============================summarizing stats for section 2======================================
+
+2018-08-30 00:25:05,012 INFO 
+==============================solving section 3 =======================================
+
+2018-08-30 00:25:05,012 INFO 
+==============================running question 2.2======================================
+
+2018-08-30 00:25:35,301 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:25:57,960 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:26:31,526 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:27:11,781 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:27:52,327 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:28:37,900 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:29:27,173 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:30:18,063 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:31:11,774 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:32:09,623 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:33:10,279 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:34:14,000 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:35:20,428 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:36:30,885 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:37:46,666 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:39:09,072 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:40:35,847 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:42:07,959 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:43:48,432 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:45:39,039 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:47:53,810 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:49:43,443 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:52:23,728 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:54:23,102 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:57:19,382 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 00:59:49,997 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:03:03,209 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:06:31,309 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:10:46,349 INFO run_neurual_net_with_D.py: finished successfully!

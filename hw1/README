@@ -1,0 +1,86 @@
+[Benjamin Liu@UC Berkeley]
+[3034330004]
+[2018-8-27]
+
+Remark:
+-- env_name and expert_name are used interchangably
+-- BC stands for behavioral cloning
+-- any users will only need to modify 3 files only - glb.py, main_q2.py, main_q3.py
+-- the all files, I am using *tab* for indentation
+
+Section 1:  File System hw1
+\experts	-- provided expert
+\expert_data	-- expert output data [.pkl], from run_expert.py
+\expert_output 	-- expert output data [.pkl], from run_expert_mod.py ## depreciated
+\behavioral_cloning_output 	-- behavioral cloning output data [/datetime/.csv][/datetime/.pkl], from behavioral_cloning.py
+\DAgger_output 	-- DAgger output data [/datetime/.csv][/datetime/.pkl], from DAgger.py
+\logging_output 	-- output log from **logging** module
+\report_ouput 		-- the folder where you can find summary information [/datetime/.csv][/datetime/.png]
+	question 2.2 related filename
+	BC-stats-summary.csv
+	question 2.3 related filename
+	[expert_name]-BC-stats-[flag].csv; [expert_name]-BC-rewards-[flag].png;
+	like Ant-v2-BC-stats-ep.csv; Ant-v2-BC-rewards-lr.png
+	question 3.2 related filename
+	[expert_name]-DAgger-stats.csv; [expert_name]-DAgger-rewards.png
+	like Ant-v2-DAgger-stats.csv; Ant-v2-DAgger-rewards.png
+
+\Modules ... contains the following files
+	glb.py
+	build_neurual_net.py
+	compute_stats.py
+	run_expert_mod.py
+	run_expert_with_obs.py
+	run_neurual_net_with_D.py
+	behavioral_cloning.py
+	DAgger.py
+	run_behavioral_cloning.py 	-- run question 2 model
+	run_DAgger.py 		-- run question 3 model
+
+main.py 	-- solution to question/section 2 and 3
+main_q2.py 	-- solution to question/section 2 and function summarize_stats_from_csv and function plot_q2_after_summarize_stats
+main_q3.py 	-- solution to question/section 3 and function plot_q3
+3034330004_hw1_sol.md 	-- writeup solution for hw1
+3034330004_hw1_sol.pdf 	-- writeup solution for hw1
+... other files can be ignored
+
+Section 2: Requirements and Running Environment
+Windows 10 64-bit
+Python 3.6 64-bit
+mujoco150
+gym==0.10.5
+mujoco-py==1.50.1.56
+tensorflow==1.5
+numpy
+seaborn
+keras
+sklearn
+properly installed mujoco follow installation instruction and mjkey required
+prefer installing VS2017 with C++ desktop development box checked
+recommend (personally) using sublime text 3 to view/edit code
+
+Section 3: Steps:
+========================================================================================================
+*****0) please make sure bash is in the dir=..\hw1
+1) in the terminal/cmd, use command: py -3.6 main.py
+2) check the files in dir=hw1\report_output\[datetime]
+- *BC-stats-summary.csv* final results for question 2.2
+- *[expert_name]-BC-stats-[flag].csv* *[expert_name]-BC-rewards-[flag].png* final results for question 2.3
+- *[expert_name]-DAgger-stats.csv* *[expert_name]-DAgger-rewards.png* final results for question 3.2
+
+========================================================================================================
+If you want to summary the stats for question 2. This is because the stats for question 2 are distributed in more than 10 different csv files, yuo may want to get the useful info out of these tens of files.
+But if you follow ***** and the program finished successfully, you don't need to do do it at all.
+
+****0) go to file main_q2.py line 188 and follow the instruction
+1) in the terminal/cmd, use command: py -3.6 main_q2.py
+2) check the [.csv] files in dir=hw1\report_output\[datetime]
+
+========================================================================================================
+If you want to get the plot for question 2.3. Yes, you can do it.
+But if you follow ***** and the program finished successfully, you don't need to do do it at all.
+
+0) Make sure you have done the *summary* part, followed the ****
+1) go to file main_q3.py line 188 and follow the instruction
+2) in the terminal/cmd, use command: py -3.6 main_q3.py
+3) check the [.png] files in dir=hw1\report_output\[datetime]
