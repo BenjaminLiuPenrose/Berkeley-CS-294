@@ -67,3 +67,29 @@ Use `tf.variables_initializer` instead.
 2018-08-30 01:03:03,209 INFO run_neurual_net_with_D.py: finished successfully!
 2018-08-30 01:06:31,309 INFO run_neurual_net_with_D.py: finished successfully!
 2018-08-30 01:10:46,349 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:19:08,689 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:25:26,569 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:30:06,581 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:35:45,710 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:41:36,874 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:47:36,382 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 01:53:46,670 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 02:00:41,025 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 02:09:36,168 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 02:18:15,005 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 02:27:41,195 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 02:35:57,301 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 02:46:07,015 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 10:30:27,449 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 10:45:24,760 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 10:58:46,328 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 11:08:20,620 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 11:20:07,969 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 11:31:40,368 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 11:44:54,319 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 12:17:21,677 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 12:18:48,795 INFO DAgger.py: finished successfully!
+2018-08-30 12:18:49,139 INFO 
+==============================summarizing stats for section 3======================================
+
+2018-08-30 12:18:49,139 INFO This is done by combing *[expert_name]-DAgger-stats.csv.* and *[expert_name]-BC-stats-ep.csv]* in folder report_output

@@ -56,7 +56,7 @@ def main_q3():
 	res['plain_test'] = run_DAgger()
 
 	logging.info("\n==============================summarizing stats for section 3======================================\n")
-	logging.info("This is done by combing *[expert_name]-DAgger-stats.csv.* and *[expert_name]-BC-stats-ep.csv]* in folder report_output")
+	# logging.info("This is done by combing *[expert_name]-DAgger-stats.csv.* and *[expert_name]-BC-stats-ep.csv]* in folder report_output")
 	plot_q3()
 
 def plot_q3(kword="ep", path=os.path.join(CURRENT_PATH, 'report_output', CURRENT_TIME)):
