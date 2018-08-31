@@ -32,6 +32,7 @@ ENV_NAME =  [
 	"Humanoid-v2",
 	"Walker2d-v2"
 ];
+ENV_NAME_TWO_LR=ENV_NAME_TWO_EP=ENV_NAME_THREE=ENV_NAME
 EXPERT_POLICY_FILE = [os.path.join(CURRENT_PATH, 'experts', x+".pkl") for x in ENV_NAME]
 MAX_TIMESTEPS = None ## this variable is never used
 RENDER_EXPERT = False
@@ -76,11 +77,26 @@ MAP_DICT = {
 	"ro": "num rollouts"
 }
 
+### HINT: If you only wish to test part of the experts for question 2 or 3,  uncomment the corresponding code block
 
-ENV_NAME =  [
-	"Humanoid-v2"
+# expert for q2
+ENV_NAME_TWO_LR =  [
+	"Ant-v2"
 ];
 
-LEARNING_RATE_BC_LIST = [0.01]+[1e-6];
-EPOCHS_LIST = [1]+[50];
-NUM_ROLLOUTS_MODEL_LIST = [1]+[50];
+ENV_NAME_TWO_EP=  [
+	"Ant-v2"
+];
+
+# expert for q3
+ENV_NAME_THREE =  [
+	"Reacher-v2"
+];
+
+# others
+ITERS = 20
+EPOCHS_LIST = [1]+[5*(x+1) for x in range(4)];
+NUM_ROLLOUTS_MODEL_LIST = [1]+[5*(x+1) for x in range(4)];
+
+RENDER_EXPERT = True
+RENDER_MODEL = False

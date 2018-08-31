@@ -1,0 +1,47 @@
+2018-08-30 21:55:04,160 INFO 
+Hello Sir, welcome to Benjamin's solution to CS294-112 hw1.........................
+
+2018-08-30 21:55:04,161 INFO 
+==============================solving section 2 =======================================
+
+2018-08-30 21:55:04,161 INFO 
+==============================running question 2.2======================================
+
+2018-08-30 21:55:05,474 WARNING From G:\Berkeley-CS-294\hw1\tf_util.py:91: all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Please use tf.global_variables instead.
+2018-08-30 21:55:05,485 WARNING From C:\Python366\lib\site-packages\tensorflow\python\util\tf_should_use.py:118: initialize_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.variables_initializer` instead.
+2018-08-30 21:55:06,830 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 21:55:07,218 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 21:55:07,226 INFO <function behavioral_cloning at 0x000001FE413C10D0>: 3.0636 seconds.
+2018-08-30 21:55:42,907 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 21:55:42,985 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 21:55:42,992 INFO <function behavioral_cloning at 0x000001FE413C10D0>: 35.7656 seconds.
+2018-08-30 21:56:01,366 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 21:56:01,409 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 21:56:01,412 INFO <function behavioral_cloning at 0x000001FE413C10D0>: 18.4206 seconds.
+2018-08-30 21:56:13,017 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 21:56:13,037 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 21:56:13,040 INFO <function behavioral_cloning at 0x000001FE413C10D0>: 11.6265 seconds.
+2018-08-30 21:56:39,077 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 21:56:39,112 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 21:56:39,121 INFO <function behavioral_cloning at 0x000001FE413C10D0>: 26.0803 seconds.
+2018-08-30 21:56:52,512 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-30 21:56:52,527 INFO behavioral_cloning.py: finished successfully!
+2018-08-30 21:56:52,530 INFO <function behavioral_cloning at 0x000001FE413C10D0>: 13.4095 seconds.
+2018-08-30 21:56:52,531 INFO 
+==============================running question 2.3======================================
+
+2018-08-30 21:56:52,532 INFO 
+==============================testing hyperparam learning rate======================================
+
+2018-08-30 21:56:52,532 INFO 
+==============================testing hyperparam epochs======================================
+
+2018-08-30 21:56:52,533 INFO 
+==============================summarizing stats for section 2======================================
+
+2018-08-30 21:56:54,432 INFO font search path ['C:\\Python366\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf', 'C:\\Python366\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\afm', 'C:\\Python366\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\pdfcorefonts']
+2018-08-30 21:56:55,948 INFO generated new fontManager

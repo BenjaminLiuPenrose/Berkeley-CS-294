@@ -34,6 +34,7 @@ LEARNING_RATE_DA = glb.LEARNING_RATE_DA
 TRAINING_OPTS_DA = glb.TRAINING_OPTS_DA
 TRAINING_OPTS_BC = glb.TRAINING_OPTS_BC
 ITERS = glb.ITERS
+ENV_NAME_THREE = glb.ENV_NAME_THREE
 from Modules.DAgger import *
 '''===================================================================================================
 File content:
@@ -50,6 +51,8 @@ def run_DAgger(config=None):
 	num_experts = len(ENV_NAME)
 
 	for i in range(num_experts):
+		if ENV_NAME[i] not in ENV_NAME_THREE:
+			break
 		config = {
 			"expert_policy_file": EXPERT_POLICY_FILE[i],
 			"env_name": ENV_NAME[i],
