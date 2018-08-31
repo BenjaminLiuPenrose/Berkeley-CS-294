@@ -1,0 +1,3 @@
+,mean reward,std reward,pct full rollouts
+expert,-3.974438022746064,1.4965463936084782,1.0
+behavioral cloning,-17.94028428549173,3.2301657086936486,1.0

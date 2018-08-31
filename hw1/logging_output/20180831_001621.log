@@ -1,0 +1,172 @@
+2018-08-31 00:16:23,235 INFO 
+Hello Sir, welcome to Benjamin's solution to CS294-112 hw1.........................
+
+2018-08-31 00:16:23,237 INFO 
+==============================solving section 2 =======================================
+
+2018-08-31 00:16:23,237 INFO 
+==============================running question 2.2======================================
+
+2018-08-31 00:16:23,710 WARNING From G:\Berkeley-CS-294\hw1\tf_util.py:91: all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Please use tf.global_variables instead.
+2018-08-31 00:16:23,713 WARNING From C:\Python366\lib\site-packages\tensorflow\python\util\tf_should_use.py:118: initialize_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.variables_initializer` instead.
+2018-08-31 00:16:24,993 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:16:25,007 INFO behavioral_cloning.py: finished successfully!
+2018-08-31 00:16:25,011 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.7724 seconds.
+2018-08-31 00:17:01,294 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:17:01,464 INFO behavioral_cloning.py: finished successfully!
+2018-08-31 00:17:01,482 INFO <function behavioral_cloning at 0x00000263558A10D0>: 36.471 seconds.
+2018-08-31 00:17:20,261 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:17:20,302 INFO behavioral_cloning.py: finished successfully!
+2018-08-31 00:17:20,306 INFO <function behavioral_cloning at 0x00000263558A10D0>: 18.8238 seconds.
+2018-08-31 00:17:31,482 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:17:31,501 INFO behavioral_cloning.py: finished successfully!
+2018-08-31 00:17:31,504 INFO <function behavioral_cloning at 0x00000263558A10D0>: 11.1969 seconds.
+2018-08-31 00:17:54,697 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:17:54,730 INFO behavioral_cloning.py: finished successfully!
+2018-08-31 00:17:54,739 INFO <function behavioral_cloning at 0x00000263558A10D0>: 23.2338 seconds.
+2018-08-31 00:18:12,581 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:12,618 INFO behavioral_cloning.py: finished successfully!
+2018-08-31 00:18:12,622 INFO <function behavioral_cloning at 0x00000263558A10D0>: 17.8822 seconds.
+2018-08-31 00:18:12,622 INFO 
+==============================running question 2.3======================================
+
+2018-08-31 00:18:12,624 INFO 
+==============================testing hyperparam learning rate======================================
+
+2018-08-31 00:18:14,253 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:14,268 INFO behavioral_cloning.py: learning_rate-0.01 finished successfully!
+2018-08-31 00:18:14,271 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.6466 seconds.
+2018-08-31 00:18:15,919 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:15,932 INFO behavioral_cloning.py: learning_rate-0.0032 finished successfully!
+2018-08-31 00:18:15,934 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.6617 seconds.
+2018-08-31 00:18:17,634 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:17,664 INFO behavioral_cloning.py: learning_rate-0.001 finished successfully!
+2018-08-31 00:18:17,668 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.7331 seconds.
+2018-08-31 00:18:19,423 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:19,437 INFO behavioral_cloning.py: learning_rate-0.00032 finished successfully!
+2018-08-31 00:18:19,440 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.7714 seconds.
+2018-08-31 00:18:21,390 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:21,405 INFO behavioral_cloning.py: learning_rate-0.0001 finished successfully!
+2018-08-31 00:18:21,408 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.9673 seconds.
+2018-08-31 00:18:23,350 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:23,363 INFO behavioral_cloning.py: learning_rate-3.2e-05 finished successfully!
+2018-08-31 00:18:23,366 INFO <function behavioral_cloning at 0x00000263558A10D0>: 1.9563 seconds.
+2018-08-31 00:18:25,381 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:25,427 INFO behavioral_cloning.py: learning_rate-1e-05 finished successfully!
+2018-08-31 00:18:25,431 INFO <function behavioral_cloning at 0x00000263558A10D0>: 2.0639 seconds.
+2018-08-31 00:18:27,604 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:27,617 INFO behavioral_cloning.py: learning_rate-3.2e-06 finished successfully!
+2018-08-31 00:18:27,620 INFO <function behavioral_cloning at 0x00000263558A10D0>: 2.1885 seconds.
+2018-08-31 00:18:29,746 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:29,759 INFO behavioral_cloning.py: learning_rate-1e-06 finished successfully!
+2018-08-31 00:18:29,762 INFO <function behavioral_cloning at 0x00000263558A10D0>: 2.1413 seconds.
+2018-08-31 00:18:31,988 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:18:32,002 INFO behavioral_cloning.py: learning_rate-1e-06 finished successfully!
+2018-08-31 00:18:32,005 INFO <function behavioral_cloning at 0x00000263558A10D0>: 2.2416 seconds.
+2018-08-31 00:19:09,811 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:19:10,001 INFO behavioral_cloning.py: learning_rate-0.01 finished successfully!
+2018-08-31 00:19:10,012 INFO <function behavioral_cloning at 0x00000263558A10D0>: 38.0067 seconds.
+2018-08-31 00:19:47,667 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:19:47,834 INFO behavioral_cloning.py: learning_rate-0.0032 finished successfully!
+2018-08-31 00:19:47,845 INFO <function behavioral_cloning at 0x00000263558A10D0>: 37.8329 seconds.
+2018-08-31 00:20:25,584 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:20:27,439 INFO behavioral_cloning.py: learning_rate-0.001 finished successfully!
+2018-08-31 00:20:27,458 INFO <function behavioral_cloning at 0x00000263558A10D0>: 39.6114 seconds.
+2018-08-31 00:21:13,899 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:21:13,995 INFO behavioral_cloning.py: learning_rate-0.00032 finished successfully!
+2018-08-31 00:21:14,001 INFO <function behavioral_cloning at 0x00000263558A10D0>: 46.5426 seconds.
+2018-08-31 00:21:57,415 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:21:57,482 INFO behavioral_cloning.py: learning_rate-0.0001 finished successfully!
+2018-08-31 00:21:57,490 INFO <function behavioral_cloning at 0x00000263558A10D0>: 43.489 seconds.
+2018-08-31 00:22:42,367 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:22:42,442 INFO behavioral_cloning.py: learning_rate-3.2e-05 finished successfully!
+2018-08-31 00:22:42,451 INFO <function behavioral_cloning at 0x00000263558A10D0>: 44.9601 seconds.
+2018-08-31 00:23:18,474 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:23:18,523 INFO behavioral_cloning.py: learning_rate-1e-05 finished successfully!
+2018-08-31 00:23:18,528 INFO <function behavioral_cloning at 0x00000263558A10D0>: 36.0773 seconds.
+2018-08-31 00:23:51,322 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:23:51,362 INFO behavioral_cloning.py: learning_rate-3.2e-06 finished successfully!
+2018-08-31 00:23:51,367 INFO <function behavioral_cloning at 0x00000263558A10D0>: 32.8377 seconds.
+2018-08-31 00:24:34,303 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:24:34,370 INFO behavioral_cloning.py: learning_rate-1e-06 finished successfully!
+2018-08-31 00:24:34,376 INFO <function behavioral_cloning at 0x00000263558A10D0>: 43.0085 seconds.
+2018-08-31 00:25:20,333 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:25:20,422 INFO behavioral_cloning.py: learning_rate-1e-06 finished successfully!
+2018-08-31 00:25:20,435 INFO <function behavioral_cloning at 0x00000263558A10D0>: 46.0582 seconds.
+2018-08-31 00:25:20,436 INFO 
+==============================testing hyperparam epochs======================================
+
+2018-08-31 00:25:23,959 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:25:23,977 INFO behavioral_cloning.py: epochs-1 finished successfully!
+2018-08-31 00:25:23,980 INFO <function behavioral_cloning at 0x00000263558A10D0>: 3.5435 seconds.
+2018-08-31 00:25:28,008 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:25:28,023 INFO behavioral_cloning.py: epochs-5 finished successfully!
+2018-08-31 00:25:28,026 INFO <function behavioral_cloning at 0x00000263558A10D0>: 4.0456 seconds.
+2018-08-31 00:25:32,240 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:25:32,259 INFO behavioral_cloning.py: epochs-10 finished successfully!
+2018-08-31 00:25:32,264 INFO <function behavioral_cloning at 0x00000263558A10D0>: 4.2364 seconds.
+2018-08-31 00:25:36,885 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:25:36,902 INFO behavioral_cloning.py: epochs-15 finished successfully!
+2018-08-31 00:25:36,906 INFO <function behavioral_cloning at 0x00000263558A10D0>: 4.6426 seconds.
+2018-08-31 00:25:41,770 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:25:41,785 INFO behavioral_cloning.py: epochs-20 finished successfully!
+2018-08-31 00:25:41,789 INFO <function behavioral_cloning at 0x00000263558A10D0>: 4.8824 seconds.
+2018-08-31 00:26:36,768 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:26:36,854 INFO behavioral_cloning.py: epochs-1 finished successfully!
+2018-08-31 00:26:36,860 INFO <function behavioral_cloning at 0x00000263558A10D0>: 55.0711 seconds.
+2018-08-31 00:27:23,996 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:27:24,104 INFO behavioral_cloning.py: epochs-5 finished successfully!
+2018-08-31 00:27:24,110 INFO <function behavioral_cloning at 0x00000263558A10D0>: 47.2487 seconds.
+2018-08-31 00:28:13,540 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:28:13,874 INFO behavioral_cloning.py: epochs-10 finished successfully!
+2018-08-31 00:28:13,880 INFO <function behavioral_cloning at 0x00000263558A10D0>: 49.77 seconds.
+2018-08-31 00:29:05,527 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:29:05,628 INFO behavioral_cloning.py: epochs-15 finished successfully!
+2018-08-31 00:29:05,636 INFO <function behavioral_cloning at 0x00000263558A10D0>: 51.7551 seconds.
+2018-08-31 00:29:54,468 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:29:54,540 INFO behavioral_cloning.py: epochs-20 finished successfully!
+2018-08-31 00:29:54,549 INFO <function behavioral_cloning at 0x00000263558A10D0>: 48.9119 seconds.
+2018-08-31 00:29:54,549 INFO 
+==============================summarizing stats for section 2======================================
+
+2018-08-31 00:29:55,944 INFO 
+==============================solving section 3 =======================================
+
+2018-08-31 00:29:55,944 INFO 
+==============================running question 2.2======================================
+
+2018-08-31 00:29:59,650 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:02,019 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:04,577 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:07,605 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:10,182 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:12,802 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:15,490 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:18,903 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:21,994 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:24,919 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:28,051 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:31,651 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:35,056 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:38,489 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:41,754 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:45,112 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:48,690 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:53,014 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:30:56,814 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:31:00,434 INFO run_neurual_net_with_D.py: finished successfully!
+2018-08-31 00:31:01,486 INFO DAgger.py: finished successfully!
+2018-08-31 00:31:01,490 INFO <function DAgger at 0x000002635652DEA0>: 65.5443 seconds.
+2018-08-31 00:31:01,490 INFO 
+==============================summarizing stats for section 3======================================
+
+2018-08-31 00:31:01,644 INFO 
+Sir, congratulations! The program finished successfully, you can find the desired files in...
+2018-08-31 00:31:01,645 INFO 
+G:\Berkeley-CS-294\hw1\report_output\20180831_001621
+2018-08-31 00:31:01,645 INFO 
+Please check and have a nice day!

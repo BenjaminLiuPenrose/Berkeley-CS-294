@@ -16,6 +16,8 @@ import Modules.glb as glb
 CURRENT_TIME = glb.CURRENT_TIME
 CURRENT_PATH = glb.CURRENT_PATH
 ENV_NAME = glb.ENV_NAME
+ENV_NAME_TWO_LR =  glb.ENV_NAME_TWO_LR
+ENV_NAME_TWO_EP = glb.ENV_NAME_TWO_EP
 from Modules.run_behavioral_cloning import *
 import pandas as pd
 
@@ -109,6 +111,8 @@ def summarize_stats_from_csv(kwords, extension="csv", path=os.path.join(CURRENT_
 			df.to_csv(csv_fname)
 		elif kword=="lr":
 			for expert_name in env_name:
+				if expert_name not in ENV_NAME_TWO_LR:
+					continue
 				df = pd.DataFrame(columns=["learning rate", "BC mean reward", "BC std reward", "expert mean reward", "expert std reward"])
 				cnt = 0
 				for f in files_ls[kword]:
@@ -124,6 +128,8 @@ def summarize_stats_from_csv(kwords, extension="csv", path=os.path.join(CURRENT_
 				df.to_csv(csv_fname)
 		elif kword=="ep":
 			for expert_name in env_name:
+				if expert_name not in ENV_NAME_TWO_EP:
+					continue
 				df = pd.DataFrame(columns=["epochs", "BC mean reward", "BC std reward", "expert mean reward", "expert std reward"])
 				cnt = 0
 				for f in files_ls[kword]:
@@ -139,9 +145,11 @@ def summarize_stats_from_csv(kwords, extension="csv", path=os.path.join(CURRENT_
 				df.to_csv(csv_fname)
 		else:
 			for expert_name in env_name:
+				if expert_name not in ENV_NAME_TWO_LR:
+					continue
 				df = pd.DataFrame(columns=["num rollouts", "BC mean reward", "BC std reward", "expert mean reward", "expert std reward"])
 				for f in files_ls:
-					if expert_name in f:
+					# if expert_name in f:
 						num_rollouts = int(re.search('num_rollouts-(.*).csv', f).group(1))
 						dat = pd.read_csv(os.path.join(path, f))
 						df.loc[num_rollouts] = [num_rollouts, dat.iloc[1, 1], dat.iloc[1, 2], dat.iloc[0, 1], dat.iloc[0, 2]]
@@ -158,6 +166,12 @@ def plot_q2_after_summarize_stats(kwords, path=os.path.join(CURRENT_PATH, 'repor
 	env_name =ENV_NAME
 	for expert_name in env_name:
 		for kword in kwords:
+			if kword == "ep":
+				if expert_name not in ENV_NAME_TWO_EP:
+					continue
+			else :
+				if expert_name not in ENV_NAME_TWO_LR:
+					continue
 			csv_fname = os.path.join(path, '{}-BC-stats-{}.csv'.format(expert_name, kword))
 			df = pd.read_csv(csv_fname, index_col=0)
 			x_kword, bc_mean_reward, bc_std_reward, expert_mean_reward, expert_std_reward = df.iloc[:,0], df.iloc[:, 1], df.iloc[:, 2], df.iloc[:, 3], df.iloc[:, 4]

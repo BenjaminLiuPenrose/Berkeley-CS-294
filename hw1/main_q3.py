@@ -16,6 +16,7 @@ import Modules.glb as glb
 CURRENT_TIME = glb.CURRENT_TIME
 CURRENT_PATH = glb.CURRENT_PATH
 ENV_NAME = glb.ENV_NAME
+ENV_NAME_THREE = glb.ENV_NAME_THREE
 from Modules.run_DAgger import *
 import pandas as pd
 
@@ -64,6 +65,8 @@ def plot_q3(kword="ep", path=os.path.join(CURRENT_PATH, 'report_output', CURRENT
 	import matplotlib.pyplot as plt
 	env_name =ENV_NAME
 	for expert_name in env_name:
+		if expert_name not in ENV_NAME_THREE:
+			continue
 		csv_fname_DA = os.path.join(path, '{}-DAgger-stats.csv'.format(expert_name))
 		csv_fname_BC = os.path.join(path, '{}-BC-stats-{}.csv'.format(expert_name, kword))
 		df_DA = pd.read_csv(csv_fname_DA)

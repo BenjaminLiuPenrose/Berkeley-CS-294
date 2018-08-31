@@ -92,11 +92,13 @@ ENV_NAME_TWO_EP=  [
 ENV_NAME_THREE =  [
 	"Reacher-v2"
 ];
+ENV_NAME_TWO_LR = ENV_NAME_TWO_LR+ENV_NAME_THREE
+ENV_NAME_TWO_EP = ENV_NAME_TWO_EP+ENV_NAME_THREE
 
 # others
 ITERS = 20
 EPOCHS_LIST = [1]+[5*(x+1) for x in range(4)];
 NUM_ROLLOUTS_MODEL_LIST = [1]+[5*(x+1) for x in range(4)];
 
-RENDER_EXPERT = True
+RENDER_EXPERT = False
 RENDER_MODEL = False

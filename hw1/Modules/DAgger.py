@@ -89,6 +89,7 @@ def DAgger(config):
 		o = np.append(o, o_new, axis = 0)
 		a = np.append(a, a_new.reshape(-1, actions_dim), axis = 0)
 
+	# env.close()
 
 	# Checking Phrase
 	df = pd.DataFrame(stats).T

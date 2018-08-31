@@ -71,6 +71,8 @@ def behavioral_cloning(config):
 	stats_bc = compute_stats(dat_bc)
 	stats = {'expert': stats_expert, 'behavioral cloning': stats_bc}
 
+	# env.close()
+
 	# Checking Phrase
 	df = pd.DataFrame(stats).T
 
