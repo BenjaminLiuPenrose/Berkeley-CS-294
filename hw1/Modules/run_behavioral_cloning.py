@@ -75,7 +75,7 @@ def run_behavioral_cloning(config={'boolean_plain_test': True}):
 		for i in range(num_experts):
 			res['learning_rate_test'][ENV_NAME[i]] = {}
 			if ENV_NAME[i] not in ENV_NAME_TWO_LR:
-				break
+				continue
 			for lr in LEARNING_RATE_BC_LIST:
 				conf = {
 					"expert_policy_file": EXPERT_POLICY_FILE[i],
@@ -97,7 +97,7 @@ def run_behavioral_cloning(config={'boolean_plain_test': True}):
 		res['epochs_test'] = {}
 		for i in range(num_experts):
 			if ENV_NAME[i] not in ENV_NAME_TWO_EP:
-				break
+				continue
 			res['epochs_test'][ENV_NAME[i]] = {}
 			for epochs in EPOCHS_LIST:
 				training_opts = TRAINING_OPTS_BC
@@ -123,7 +123,7 @@ def run_behavioral_cloning(config={'boolean_plain_test': True}):
 		res['num_rollouts_model'] = {}
 		for i in range(num_experts):
 			if ENV_NAME[i] not in ENV_NAME_TWO_LR:
-				break
+				continue
 			res['num_rollouts_model'][ENV_NAME[i]] = {}
 			for num_rollouts_model in NUM_ROLLOUTS_MODEL_LIST:
 				conf = {

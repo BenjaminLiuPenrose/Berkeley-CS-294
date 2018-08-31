@@ -52,7 +52,7 @@ def run_DAgger(config=None):
 
 	for i in range(num_experts):
 		if ENV_NAME[i] not in ENV_NAME_THREE:
-			break
+			continue
 		config = {
 			"expert_policy_file": EXPERT_POLICY_FILE[i],
 			"env_name": ENV_NAME[i],
