@@ -11850,53 +11850,43 @@ div#notebook {
 <thead><tr>
 <th>Ant-v2</th>
 <th>expert</th>
-<th>imitation</th>
+<th>imitation(BC)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>mean reward</td>
-<td>4823</td>
-<td>4776</td>
+<td>4814</td>
+<td>4406</td>
 </tr>
 <tr>
 <td>std reward</td>
-<td>87</td>
-<td>92</td>
-</tr>
-<tr>
-<td>pct full rollout</td>
-<td>100%</td>
-<td>100%</td>
+<td>109</td>
+<td>573</td>
 </tr>
 </tbody>
 </table>
 <h3 id="significant-deviation-from-expert-performance">significant deviation from expert performance<a class="anchor-link" href="#significant-deviation-from-expert-performance">&#182;</a></h3><table>
 <thead><tr>
-<th>Reacher-v2</th>
+<th>Humanoid-v2</th>
 <th>expert</th>
-<th>imitation</th>
+<th>imitation(BC)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>mean reward</td>
-<td>-4.39</td>
-<td>-10.06</td>
+<td>10398</td>
+<td>1398</td>
 </tr>
 <tr>
 <td>std reward</td>
-<td>2.00</td>
-<td>4.62</td>
-</tr>
-<tr>
-<td>pct full rollout</td>
-<td>100%</td>
-<td>100%</td>
+<td>46.76</td>
+<td>662.15</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Question-2.3---BC-sensitivity-analysis-to-hyperparameters-(Ant-v2-as-example-in-this-report)">Question 2.3 - BC sensitivity analysis to hyperparameters (Ant-v2 as example in this report)<a class="anchor-link" href="#Question-2.3---BC-sensitivity-analysis-to-hyperparameters-(Ant-v2-as-example-in-this-report)">&#182;</a></h2><h3 id="learning-rate">learning rate<a class="anchor-link" href="#learning-rate">&#182;</a></h3><p><img src="report_output/Ant-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
+<h2 id="Question-2.3---BC-sensitivity-analysis-to-hyperparameters-(Ant-v2-as-example-in-this-example)">Question 2.3 - BC sensitivity analysis to hyperparameters (Ant-v2 as example in this example)<a class="anchor-link" href="#Question-2.3---BC-sensitivity-analysis-to-hyperparameters-(Ant-v2-as-example-in-this-example)">&#182;</a></h2><h3 id="learning-rate">learning rate<a class="anchor-link" href="#learning-rate">&#182;</a></h3><p><img src="report_output/Ant-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
 <h3 id="training-epochs">training epochs<a class="anchor-link" href="#training-epochs">&#182;</a></h3><p><img src="report_output/Ant-v2-BC-rewards-ep.png" alt="behavioral cloning performance"></p>
 
 </div>
@@ -11906,7 +11896,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Question-3---DAgger">Question 3 - DAgger<a class="anchor-link" href="#Question-3---DAgger">&#182;</a></h1><h2 id="Question-3.2---DAgger-performance-against-behavioral-cloning-(Reacher-v2-as-example-in-this-report)">Question 3.2 - DAgger performance against behavioral cloning (Reacher-v2 as example in this report)<a class="anchor-link" href="#Question-3.2---DAgger-performance-against-behavioral-cloning-(Reacher-v2-as-example-in-this-report)">&#182;</a></h2><h3 id="Architecture-of-the-neural-net">Architecture of the neural net<a class="anchor-link" href="#Architecture-of-the-neural-net">&#182;</a></h3><ul>
+<h1 id="Question-3---DAgger">Question 3 - DAgger<a class="anchor-link" href="#Question-3---DAgger">&#182;</a></h1><h2 id="Question-3.2---DAgger-performance-against-behavioral-cloning-(Reacher-v2-as-example-in-this-example)">Question 3.2 - DAgger performance against behavioral cloning (Reacher-v2 as example in this example)<a class="anchor-link" href="#Question-3.2---DAgger-performance-against-behavioral-cloning-(Reacher-v2-as-example-in-this-example)">&#182;</a></h2><h3 id="Architecture-of-the-neural-net">Architecture of the neural net<a class="anchor-link" href="#Architecture-of-the-neural-net">&#182;</a></h3><ul>
 <li>Normalization of inputs (aka Z-score) (rmk: std+=1e-6 to avoid divide by 0)</li>
 <li>2 <code>Dense</code> hidden layer, <code>tanh</code> activation</li>
 <li><code>Dense</code> output layer</li>
@@ -11916,7 +11906,8 @@ div#notebook {
 <li>each rollout stop until <code>max_steps = env.spec.timestep_limit</code></li>
 <li>for the ietrations of DAgger, <code>iters=10</code></li>
 </ul>
-<h3 id="DAgger-performs-better-than-behavioral-cloning">DAgger performs better than behavioral cloning<a class="anchor-link" href="#DAgger-performs-better-than-behavioral-cloning">&#182;</a></h3><p><img src="report_output/Reacher-v2-DAgger-rewards.png" alt="DAgger performance"></p>
+<h3 id="DAgger-performs-better-than-behavioral-cloning">DAgger performs better than behavioral cloning<a class="anchor-link" href="#DAgger-performs-better-than-behavioral-cloning">&#182;</a></h3><p>Remark: In this exercise, I compare the performace of different iterations of DAgger against different traing epochs of vanilla behavioral cloning
+<img src="report_output/Reacher-v2-DAgger-rewards.png" alt="DAgger performance"></p>
 
 </div>
 </div>
@@ -11928,6 +11919,7 @@ div#notebook {
 <h1 id="Appendix">Appendix<a class="anchor-link" href="#Appendix">&#182;</a></h1><h3 id="BC-hyperparams----rewards-vs-learning-rate">BC hyperparams -- rewards vs learning rate<a class="anchor-link" href="#BC-hyperparams----rewards-vs-learning-rate">&#182;</a></h3><p><img src="report_output/Ant-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
 <p><img src="report_output/HalfCheetah-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
 <p><img src="report_output/Hopper-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
+<p><img src="report_output/Humanoid-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
 <p><img src="report_output/Reacher-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
 <p><img src="report_output/Walker2d-v2-BC-rewards-lr.png" alt="behavioral cloning performance"></p>
 <h3 id="BC-hyperparams----rewards-vs-epochs">BC hyperparams -- rewards vs epochs<a class="anchor-link" href="#BC-hyperparams----rewards-vs-epochs">&#182;</a></h3><p><img src="report_output/Ant-v2-BC-rewards-ep.png" alt="behavioral cloning performance"></p>
@@ -11936,7 +11928,8 @@ div#notebook {
 <p><img src="report_output/Humanoid-v2-BC-rewards-ep.png" alt="behavioral cloning performance"></p>
 <p><img src="report_output/Reacher-v2-BC-rewards-ep.png" alt="behavioral cloning performance"></p>
 <p><img src="report_output/Walker2d-v2-BC-rewards-ep.png" alt="behavioral cloning performance"></p>
-<h3 id="Expert-vs-BC-vs-DAgger----rewards-vs-iters---">Expert vs BC vs DAgger -- rewards vs iters --<a class="anchor-link" href="#Expert-vs-BC-vs-DAgger----rewards-vs-iters---">&#182;</a></h3><p><img src="report_output/Ant-v2-DAgger-rewards.png" alt="DAgger performance"></p>
+<h3 id="Expert-vs-BC-vs-DAgger----rewards-vs-iters">Expert vs BC vs DAgger -- rewards vs iters<a class="anchor-link" href="#Expert-vs-BC-vs-DAgger----rewards-vs-iters">&#182;</a></h3><p>Remark: In this exercise, I compare the performace of different iterations of DAgger against different traing epochs of vanilla behavioral cloning
+<img src="report_output/Ant-v2-DAgger-rewards.png" alt="DAgger performance"></p>
 <p><img src="report_output/HalfCheetah-v2-DAgger-rewards.png" alt="DAgger performance"></p>
 <p><img src="report_output/Hopper-v2-DAgger-rewards.png" alt="DAgger performance"></p>
 <p><img src="report_output/Humanoid-v2-DAgger-rewards.png" alt="DAgger performance"></p>

@@ -68,6 +68,10 @@ Section 3: Steps:
 - *[expert_name]-BC-stats-[flag].csv* *[expert_name]-BC-rewards-[flag].png* final results for question 2.3
 - *[expert_name]-DAgger-stats.csv* *[expert_name]-DAgger-rewards.png* final results for question 3.2
 
+Rmk:
+It will take ~15 mins to perform the tasks
+If you want to train more experts/more hyper params, (for example, in order to generate my final report, I train all experts and larger range of learning rate and epochs, which in total takes me ~2 hours), you can go to file glb.py and follow the instruction at the end of glb.py
+
 ========================================================================================================
 If you want to summary the stats for question 2. This is because the stats for question 2 are distributed in more than 10 different csv files, yuo may want to get the useful info out of these tens of files.
 But if you follow ***** and the program finished successfully, you don't need to do do it at all.

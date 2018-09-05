@@ -79,6 +79,11 @@ def plot_q3(kword="ep", path=os.path.join(CURRENT_PATH, 'report_output', CURRENT
 		clrs = sns.color_palette("husl", 3)
 		ax.plot(x_da, da_mean_reward, label="DAgger", c=clrs[0])
 		ax.fill_between(x_da, da_mean_reward-da_std_reward, da_mean_reward+da_std_reward, alpha=0.3, facecolor=clrs[0])
+		################## modify the plot here
+		# ax.plot(x_da, [da_mean_reward[0]]*len(x_da), label="BehavioralCloning", c=clrs[1])
+		# ax.fill_between(x_da, [da_mean_reward[0]-da_std_reward[0]]*len(x_da), [da_mean_reward[0]+da_std_reward[0]]*len(x_da), alpha=0.3, facecolor=clrs[1])
+		# ax.plot(x_da, [expert_mean_reward[1]]*len(x_da), label="ExpertPolicy", c=clrs[2])
+		# ax.fill_between(x_da, [expert_mean_reward[1]-expert_std_reward[1]]*len(x_da), [expert_mean_reward[1]+expert_std_reward[1]]*len(x_da), alpha=0.3, facecolor=clrs[2])
 		ax.plot(x_bc, bc_mean_reward, label="BehavioralCloning", c=clrs[1])
 		ax.fill_between(x_bc, bc_mean_reward-bc_std_reward, bc_mean_reward+bc_std_reward, alpha=0.3, facecolor=clrs[1])
 		ax.plot(x_bc, expert_mean_reward, label="ExpertPolicy", c=clrs[2])
