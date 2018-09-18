@@ -1,0 +1,51 @@
+[Benjamin Liu@UC Berkeley]
+[3034330004]
+[2018-8-27]
+
+Section 1:  File System hw2
+\Modules	-- potential helpful functions
+	tf_reset.py
+	Tools.py
+\data 		-- stored results for different tasks under different hyperparams
+	folder [list_of_hyperparams]_[expert_name]_[experiement_time]	-- experiment stats
+	file [.png]		-- figures for report
+
+train_pg_f18.py	-- the main file provided by GSI and modified according to homework instructions
+q4_main.bash	-- cmd for question 4
+q5_main.bash	-- cmd for question 5
+q7_main.bash	-- cmd for question 7
+q8_main.bash	-- cmd for question 8
+gae_main.bash	-- cdm for bonus question GAE_lambda
+... other files can be ignored
+
+
+Section 2: Requirements and Running Environment
+Windows 10 64-bit
+Python 3.6 64-bit
+mujoco150
+gym==0.10.5
+mujoco-py==1.50.1.56
+tensorflow==1.5
+numpy
+seaborn
+Box2D==2.3.2
+tensorflow_probability
+recommend (personally) using sublime text 3 to view/edit code
+
+
+Section 3: Steps:
+1)For Problem 4, run
+	sh q4_main.bash
+2)For Problem 5, run
+	sh q5_main.bash
+3)For Problem 7,
+	sh q7_main.bash
+4)For Problem 8,
+	sh q8_main.bash
+5)For Bonus question - implementation of GAE_lambda
+	sh gae_main.bash
+
+6) read report files - file start with 3034330004 [.pdf][.html][.md]
+optional) run the main program by
+	python train_pg_f18.py ...
+	python ploy.py ...

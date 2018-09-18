@@ -1,0 +1,143 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[parfill]{parskip}
+
+\newcommand{\xb}{\mathbf{x}}
+\newcommand{\yb}{\mathbf{y}}
+\newcommand{\wb}{\mathbf{w}}
+\newcommand{\Xb}{\mathbf{X}}
+\newcommand{\Yb}{\mathbf{Y}}
+\newcommand{\tr}{^T}
+\newcommand{\hb}{\mathbf{h}}
+\newcommand{\Hb}{\mathbf{H}}
+
+\newcommand{\cmt}[1]{{\footnotesize\textcolor{red}{#1}}}
+\newcommand{\todo}[1]{\cmt{TO-DO: #1}}
+
+\title{CS294-112 Deep Reinforcement Learning HW2: \\ Policy Gradients\\
+\textbf{due September 19th 2018, 11:59 pm}}
+
+\author{
+}
+
+\date{}
+
+\usepackage{courier}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    %numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\begin{document}
+
+
+\maketitle
+
+
+\textbf{Problem 1. State-dependent baseline:}
+In lecture we saw that the policy gradient is unbiased if the baseline is a constant with respect to $\tau$ (Equation~\ref{constant_wrt_tau}). The purpose of this problem is to help convince ourselves that subtracting a state-dependent baseline from the return keeps the policy gradient unbiased. Using the \href{https://en.wikipedia.org/wiki/Law_of_total_expectation}{\textcolor{blue}{law of iterated expectations}} show that the policy gradient is still unbiased if the baseline $b$ is function of a state at a particular timestep of $\tau$ (Equation~\ref{state_dependent_baseline}).
+Please answer the questions below in \LaTeX in your report.
+\begin{enumerate} [label=(\alph*)]
+\item Note that by \href{https://brilliant.org/wiki/linearity-of-expectation/}{\textcolor{blue}{linearity of expectation}} the objective can be written as:
+\begin{align*}
+    J(\theta) &= \mathbb{E}_{\tau \sim \pi_\theta(\tau)} \left[r(\tau)\right] \\
+    &= \mathbb{E}_{\tau \sim \pi_\theta(\tau)} \left[\sum_{t=1}^{T} r(s_t, a_t)\right] \\
+    &= \sum_{t=1}^{T} \mathbb{E}_{(s_t, a_t) \sim p(s_t, a_t)} \left[r(s_t, a_t)\right] \\
+\end{align*}
+when we subtract the baseline $b(s_t)$, the objective becomes:
+\begin{align*}
+    &= \sum_{t=1}^{T} \mathbb{E}_{(s_t, a_t) \sim p(s_t, a_t)} \left[r(s_t, a_t) - b(s_t)\right].
+\end{align*}
+Please show that
+\begin{align*}
+\nabla_\theta \sum_{t=1}^{T} \mathbb{E}_{(s_t, a_t) \sim p(s_t, a_t)} \left[b(s_t)\right] = 0.
+\end{align*}
+
+\item Solution to (a): \\
+Assume $a_t$ and $s_t$ are discrete variables.
+The trajectory follows  $p(s_t, a_t)$.
+The policy is $pi_\theta(a_t|s_t)$.
+The state transition probability is $p(s_t|s_{t-1},a_{t-1})$.
+Notice that given at time t, $s_{t-1}$ and $a_{t-1}$ are known
+\begin{align*}
+    J(\theta) &= \sum_{t=1}^{T} \mathbb{E}_{(s_t, a_t) \sim p_\theta(s_t, a_t)} \left[b(s_t)\right] \\
+    &= \sum_{t=1}^{T} \sum_{s_t}{ \sum_{a_t}{b(s_t)\pi_\theta(a_t|s_t)p(s_t|s_{t-1},a_{t-1})} } \\
+    &= \sum_{t=1}^{T} \sum_{s_t}{ b(s_t)p(s_t|s_{t-1},a_{t-1})  \sum_{a_t} {\pi_\theta(a_t|s_t)}} \\
+    &= \sum_{t=1}^{T} \sum_{s_t}{ b(s_t)p(s_t|s_{t-1},a_{t-1})}\\
+\end{align*}
+Above is independent of $\theta$, then 
+\begin{align*}
+    \nabla_\theta J(\theta) &= \nabla_\theta \sum_{t=1}^{T} \sum_{s_t}{ b(s_t)p(s_t|s_{t-1},a_{t-1})} =0 	
+\end{align*}
+
+
+
+\item An alternative approach is to look at the entire trajectory and consider a particular timestep $t^* \in [1, T-1]$ (the timestep $T$ case would be very similar to part (a)).
+\begin{enumerate}
+    \item We can exploit the conditional independency structure of $\pi_\theta(\tau) = p(s_1, a_1, ..., s_T, a_T)$ and use the law of iterated expectations to break Equation~\ref{unbiased_state_dependent_baseline} into two expectations, where the the outer expectation is over $(s_1, a_1, ..., a_{t^*-1}, s_{t^*})$, and the inner expectation is over the rest of the trajectory, conditioned on $(s_1, a_1, ..., a_{t^*-1}, s_{t^*})$. Explain why, for the inner expectation, conditioning on $(s_1, a_1, ..., a_{t^*-1}, s_{t^*})$ is equivalent to conditioning only on $s_{t^*}$.
+    \item Using the iterated expectation described above, show that
+\begin{align} \label{unbiased_state_dependent_baseline}
+\nabla_\theta \mathbb{E}_{\tau \sim \pi_\theta(\tau)} \left[b\left(s_{t^*}\right)\right] = 0.
+\end{align}
+\end{enumerate}
+
+\item Solution to (c):\\
+Denote $\tau^*$ as $(s_1, a_1, ..., a_{t^*-1}, s_{t^*})$ \\
+Denote $\tau^c$ as $(a_{t^*}, s_{t^*+1}, ..., a_{T}, s_{T})$ \\
+\begin{align*}
+    &\mathbb{E}_{\tau \sim p_\theta(\tau)} \left[b\left(s_{t^*}\right)\right] = \mathbb{E}_{\tau} \left[b\left(s_{t^*}\right)\right] \\
+    &= \sum_{\tau^C} {\sum_{\tau^*} {b(s_{t^*})p(\tau^*)p(\tau|\tau^*)}}
+\end{align*}
+Notice that $p(\tau|\tau^*)=p(\tau|s_{t^*})=p(\tau^C)$ due to Markov Property of the MDP.
+\begin{align*}
+	&= \sum_{\tau^C} {\sum_{\tau^*} {b(s_{t^*})p(\tau^*)p(\tau^C )}}
+\end{align*}
+Notice that $p(\tau^*)=p(s_{t^*}|s_{t-1}, a_{t-1})p(s_{t-1}, a_{t-1}, ..., s_1)$
+\begin{align*}
+	\sum_{\tau^*} {b(s_{t^*})p(\tau^*)} 
+	& = 
+\end{align*}
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}
+
+
