@@ -11986,10 +11986,22 @@ done</code></pre>
 <h1 id="Bonus-Question---Implementation-of-GAE_lambda">Bonus Question - Implementation of GAE_lambda<a class="anchor-link" href="#Bonus-Question---Implementation-of-GAE_lambda">&#182;</a></h1><h4 id="Learning-performance-comparison-of">Learning performance comparison of<a class="anchor-link" href="#Learning-performance-comparison-of">&#182;</a></h4><ul>
 <li>Learner 1: with baseline and reward to go</li>
 <li>Learner 2: with bl, rtg and GAE with <code>lambda=0.9</code></li>
-<li>Learner 3: with bl, rtg and GAE with <code>lambda=0.99</code>
-<img src="data/gae_learning_curve_Walker2d_171521_b5000r1e-2d99.png" alt="Walker2d learning curve 1">
-<img src="data/gae_learning_curve_Walker2d_171521_b5000r1e-2d9.png" alt="Walker2d learning curve 2"></li>
+<li>Learner 3: with bl, rtg and GAE with <code>lambda=0.99</code></li>
 </ul>
+<p>Details see file <code>train_pg_f18.py</code> line 501-line 516.</p>
+<p>Trained date one <code>batch_size=[5000, 50000]</code>, <code>learning_rate=[1e-2, 2e-2]</code> and <code>nn_size=[32, 64]</code> have been tested out and the resulting images are in folder <code>data</code>.
+The results for <code>batch_size=5000</code>, <code>learning_rate=2e-2</code> and <code>nn_size=32</code> are displayed.
+<img src="data/gae_learning_curve_Walker2d_171521_b5000r1e-2d99.png" alt="Walker2d learning curve 1">
+<img src="data/gae_learning_curve_Walker2d_171521_b5000r1e-2d9.png" alt="Walker2d learning curve 2"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Provide-the-exact-command-line-configurations-you-used-to-run-your-experiments">Provide the exact command line configurations you used to run your experiments<a class="anchor-link" href="#Provide-the-exact-command-line-configurations-you-used-to-run-your-experiments">&#182;</a></h4><p>Codes are include in <code>gae_main.bash</code></p>
 
 </div>
 </div>

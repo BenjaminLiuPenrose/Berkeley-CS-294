@@ -497,9 +497,8 @@ class Agent(object):
                     np.mean(q_n), np.std(q_n))
             )
             ### END Solution
-            ### IMPLEMENTATION OF GAE_LAMBDA
             adv_n = q_n - b_n
-
+            ### IMPLEMENTATION OF GAE_LAMBDA
             ### BEGIN IMPLEMENTATION
             if self.gae:
                 adv_n = []

@@ -43,6 +43,8 @@ Section 3: Steps:
 4)For Problem 8,
 	sh q8_main.bash
 5)For Bonus question - implementation of GAE_lambda
+	details see file train_pg_f18.py line 501-line 516
+	Trained date one `batch_size=[500, 5000, 50000]`, `learning_rate=[1e-2, 2e-2]` and `nn_size=[32, 64]` have been tested out and the resulting images are in folder data.
 	sh gae_main.bash
 
 6) read report files - file start with 3034330004 [.pdf][.html][.md]
