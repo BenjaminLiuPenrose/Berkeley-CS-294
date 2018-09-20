@@ -1,0 +1,10 @@
+VS2017 C++ Desktop dev
+Mojuco installation
+https://www.lfd.uci.edu/~gohlke/pythonlibs/
+atari-py wheels (binaries)
+https://github.com/Kojoley/atari-py/releases
+swig
+make
+cmake
+msvcrt.dll
+restart cmd
