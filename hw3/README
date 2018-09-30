@@ -1,0 +1,44 @@
+[Benjamin Liu@UC Berkeley]
+[3034330004]
+[2018-8-25]
+
+Section 1:  File System hw3
+run_dqn_atari.py
+run_dqn_ram.py
+run_dqn_lander.py
+train_ac_f18.py	-- the main file provided by GSI and modified according to homework instructions
+... other files can be ignored
+
+
+Section 2: Requirements and Running Environment
+Windows 10 64-bit
+Python 3.6 64-bit
+mujoco150
+gym==0.10.5
+mujoco-py==1.50.1.56
+tensorflow==1.5
+numpy
+seaborn
+Box2D==2.3.2
+tensorflow_probability
+opencv-python
+gym[atari]
+recommend (personally) using sublime text 3 to view/edit code
+
+
+Section 3: Steps:
+1) DQN - Question 1 - basic Q-learning performance
+
+2) Question 2 - double Q-learning
+
+3) Question 3 - experimenting with hyperparamsters
+
+4) AC - Question 1 - Sanity check with Cartpole
+
+5) Question 2 - Run actor-critic with more difficult tasks
+
+
+6) read report files - file start with 3034330004 [.pdf][.html][.md]
+optional) run the main program by
+	python run_dqn_atari.py
+	python train_ac_f18.py ...

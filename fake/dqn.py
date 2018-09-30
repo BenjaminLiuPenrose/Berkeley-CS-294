@@ -126,7 +126,7 @@ def learn(env,
     # q_func_vars = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='q_func')
     # Older versions of TensorFlow may require using "VARIABLES" instead of "GLOBAL_VARIABLES"
     ######
-    
+
     q_t = q_func(obs_t_float, num_actions, scope = "q_func", reuse = False)
     q_t1 = q_func(obs_tp1_float, num_actions, scope = "target_q_func", reuse = False)
     best_action = tf.argmax(q_t, axis = 1)
@@ -203,7 +203,7 @@ def learn(env,
         # might as well be random, since you haven't trained your net...)
 
         #####
-        
+
         idx = replay_buffer.store_frame(last_obs)
 
         if not model_initialized:
@@ -213,7 +213,7 @@ def learn(env,
             action = session.run(best_action, feed_dict = {obs_t_ph: [obs]})
             if random.random() < exploration.value(t) * num_actions / (num_actions - 1):
                 action = random.randint(0, num_actions - 1)
-        
+
         next_obs, reward, done, _ = env.step(action)
         replay_buffer.store_effect(idx, action, reward, done)
         if done:
@@ -274,7 +274,7 @@ def learn(env,
                 initialize_interdependent_variables(session, tf.global_variables(), {
                     obs_t_ph: obs_batch,
                     obs_tp1_ph: next_obs_batch,
-                }) 
+                })
                 model_initialized = True
 
             session.run(train_fn, {
@@ -289,7 +289,7 @@ def learn(env,
             num_param_updates += 1
             if num_param_updates % target_update_freq == 0:
                 session.run(update_target_fn)
-            
+
             #####
 
         ### 4. Log progress
