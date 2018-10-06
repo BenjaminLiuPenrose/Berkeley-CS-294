@@ -335,6 +335,8 @@ class QLearner(object):
 		if len(episode_rewards) > 100:
 			self.best_mean_episode_reward = max(self.best_mean_episode_reward, self.mean_episode_reward)
 
+		if self.t % 1000 == 0 and self.model_initialized:
+			print("Checking Timestep %d" % (self.t,))
 		if self.t % self.log_every_n_steps == 0 and self.model_initialized:
 			print("Timestep %d" % (self.t,))
 			print("mean reward (100 episodes) %f" % self.mean_episode_reward)

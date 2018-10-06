@@ -115,7 +115,7 @@ def main():
     seed = 0 # Use a seed of zero (you may want to randomize the seed!)
     env = get_env(seed)
     session = get_session()
-    atari_learn(env, session, num_timesteps=int(4e6)) # 4e7
+    atari_learn(env, session, num_timesteps=int(4e7)) # 4e6
 
 if __name__ == "__main__":
     main()

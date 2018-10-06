@@ -7,6 +7,8 @@ run_dqn_atari.py
 run_dqn_ram.py
 run_dqn_lander.py
 train_ac_f18.py	-- the main file provided by GSI and modified according to homework instructions
+actorcritic.bash    -- code for actorcritic
+data/... data for actor-critic
 ... other files can be ignored
 
 
@@ -28,17 +30,18 @@ recommend (personally) using sublime text 3 to view/edit code
 
 Section 3: Steps:
 1) DQN - Question 1 - basic Q-learning performance
-
+    python run_dqn_atari.py
 2) Question 2 - double Q-learning
-
+    python run_dqn_atari.py (change param in file run_dqn_atari.py double_q to True)
 3) Question 3 - experimenting with hyperparamsters
-
+    python run_dqn_atari.py (change param gamma in file run_dqn_atari.py gamma to different values)
 4) AC - Question 1 - Sanity check with Cartpole
-
+    sh actorcritic.bash
 5) Question 2 - Run actor-critic with more difficult tasks
-
+    sh actorcritic.bash
 
 6) read report files - file start with 3034330004 [.pdf][.html][.md]
 optional) run the main program by
-	python run_dqn_atari.py
+	python run_dqn_atari.py ...
+    python run_dqn_ram.py ...
 	python train_ac_f18.py ...

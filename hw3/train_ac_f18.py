@@ -260,7 +260,7 @@ class Agent(object):
         # This is used in the loss function.
         self.sy_logprob_n = self.get_log_prob(self.policy_parameters, self.sy_ac_na)
 
-        actor_loss = tf.reduce_sum(-self.sy_logprob_n * self.sy_adv_n)
+        actor_loss = -tf.reduce_sum(self.sy_logprob_n * self.sy_adv_n)
         self.actor_update_op = tf.train.AdamOptimizer(self.learning_rate).minimize(actor_loss)
 
         # define the critic
@@ -372,16 +372,21 @@ class Agent(object):
         ### BEGIN Solution
         adv_n = []
         q_n = []
-        v_critic_t_n = self.sess.run([self.critic_prediction], feed_dict={self.sy_ob_no: ob_no})
-        v_critic_tp1_n = self.sess.run([self.critic_prediction], feed_dict={self.sy_ob_no: next_ob_no})
-        for re, v_t, v_tp1, temi in zip(re_n, v_critic_t_n, v_critic_tp1_n, terminal_n):
-            q = re + self.gamma*v_tp1
-            adv = q - v_t
-            if temi == 1:
-                q = re
-                adv = re - v_t
-            adv_n.extend(adv)
-            q_n.extend(q)
+        v_critic_t_n = self.sess.run(self.critic_prediction, feed_dict={self.sy_ob_no: ob_no})
+        v_critic_tp1_n = self.sess.run(self.critic_prediction, feed_dict={self.sy_ob_no: next_ob_no})
+        assert(np.array(terminal_n).shape == np.array(v_critic_tp1_n).shape)
+        v_critic_tp1_n_with_termi = (1 - np.array(terminal_n)) * np.array(v_critic_tp1_n)
+        q_n = re_n + self.gamma * v_critic_tp1_n_with_termi
+        adv_n = q_n - v_critic_t_n
+
+        # for re, v_t, v_tp1, temi in zip(re_n, v_critic_t_n, v_critic_tp1_n, terminal_n):
+        #     q = re + self.gamma*v_tp1
+        #     adv = q - v_t
+        #     if temi == 1:
+        #         q = re
+        #         adv = re - v_t
+        #     adv_n.extend(adv)
+        #     q_n.extend(q)
         ### END Solution
 
         if self.normalize_advantages:
@@ -420,27 +425,33 @@ class Agent(object):
         # YOUR CODE HERE
         # raise NotImplementedError
         ### BEGIN Solution
-        b = self.num_grad_steps_per_target_update
-
+        # b = self.num_grad_steps_per_target_update
+        # for i in range(self.num_target_updates):
+        #     if (i+1)*b > len(re_n):
+        #         end = len(re_n)
+        #     else:
+        #         end = (i+1)*b
+        #     if end>len(re_n) or i*b >len(re_n):
+        #         break
+        #     terminal_b = terminal_n[i*b: end]
+        #     ob_bo = ob_no[i*b: end]
+        #     next_ob_bo = next_ob_no[i*b: end]
+        #     re_b = np.array(re_n[i*b: end])
+        #     v_tp1_b = self.sess.run(self.critic_prediction, feed_dict={self.sy_ob_no: next_ob_bo})
+        #     target_b = re_b + self.gamma*v_tp1_b
+        #     for idx, temi in enumerate(terminal_b):
+        #         if temi == 1:
+        #             target_b[idx] = v_tp1_b[idx]
+        #     temp = target_b.T
+        #     target_b = temp.reshape(temp.shape[0], ) ### demmy code to reshape
+        #     self.sess.run([self.critic_update_op], feed_dict={self.sy_ob_no: ob_bo, self.sy_target_n: target_b})
         for i in range(self.num_target_updates):
-            if (i+1)*b > len(re_n):
-                end = len(re_n)
-            else:
-                end = (i+1)*b
-            terminal_b = terminal_n[i*b: end]
-            ob_bo = ob_no[i*b: end]
-            next_ob_bo = next_ob_no[i*b: end]
-            re_b = np.array(re_n[i*b: end])
-            v_tp1_b = np.array(self.sess.run([self.critic_prediction], feed_dict={self.sy_ob_no: next_ob_bo}))
-            # print(re_b)
-            # print(v_tp1_b)
-            target_b = re_b + self.gamma*v_tp1_b
-            for idx, temi in enumerate(terminal_b):
-                if temi == 1:
-                    target_b[idx] = v_tp1_b[idx]
-            temp = target_b.T
-            target_b = temp.reshape(temp.shape[0], ) ### demmy code to reshape
-            self.sess.run([self.critic_update_op], feed_dict={self.sy_ob_no: ob_bo, self.sy_target_n: target_b})
+            v_tp1_n = self.sess.run(self.critic_prediction, feed_dict={self.sy_ob_no: next_ob_no})
+            assert(np.array(terminal_n).shape == np.array(v_tp1_n).shape)
+            v_tp1_n_with_termi = (1 - np.array(terminal_n)) * np.array(v_tp1_n)
+            target_n = re_n + self.gamma * v_tp1_n_with_termi
+            for j in range(self.num_grad_steps_per_target_update):
+                self.sess.run(self.critic_update_op, feed_dict={self.sy_ob_no: ob_no, self.sy_target_n: target_n})
         ### END Solution
 
     def update_actor(self, ob_no, ac_na, adv_n):
