@@ -55,7 +55,7 @@ def plot_data(data):
     xs = list(np.linspace(1, len(data), len(data))*20000+50000)
     plt.plot(xs, data)
     plt.legend(loc='best').draggable()
-    plt.show()
+    # plt.show()
 
 
 
@@ -68,8 +68,9 @@ def main():
     data = []
     for pkldir in args.pkldir:
         with open(pkldir, 'rb') as fil:
-            data += pickle.load(fil)
+            data = pickle.load(fil)
         plot_data(data)
+    plt.show()
 
 if __name__ == "__main__":
     main()

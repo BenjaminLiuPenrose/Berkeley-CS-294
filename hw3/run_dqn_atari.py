@@ -69,7 +69,7 @@ def atari_learn(env,
         stopping_criterion=stopping_criterion,
         replay_buffer_size=1000000,
         batch_size=32,
-        gamma=0.97, ### 0.95, 0.9, 0.97, 0.8
+        gamma=0.99, ### tested hyper param: 0.95, 0.9, 0.97, 0.8
         learning_starts=50000,
         learning_freq=4,
         frame_history_len=4,
