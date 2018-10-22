@@ -1,0 +1,35 @@
+[Benjamin Liu@UC Berkeley]
+[3034330004]
+[2018-10-20]
+
+Section 1:  File System hw4
+model_based_policy.py
+model_based_rl.py
+utils.py
+run_all_mod.bash    -- code for all problems
+data/... data for all question 1, 2 and 3
+... other files can be ignored
+
+
+Section 2: Requirements and Running Environment
+Windows 10 64-bit
+Python 3.6 64-bit
+mujoco150
+gym==0.10.5
+mujoco-py==1.50.1.56
+tensorflow==1.5
+numpy
+seaborn
+Box2D==2.3.2
+tensorflow_probability
+opencv-python
+gym[atari]
+pandas
+colorlog
+recommend (personally) using sublime text 3 to view/edit code
+
+
+Section 3: Steps:
+1) run command `bash run_all_mod.sh`
+
+2) read report files - file start with 3034330004 [.pdf][.html][.md]
