@@ -201,36 +201,45 @@ class ModelBasedPolicy(object):
 
             best_action = action_random_sample[0][tf.argmin(cost)]
         else:
-            mean, std = 0, 1.0
+            mean, std = np.zeros(self._horizon), np.ones(self._horizon)
             num_random_action_selection = self._num_random_action_selection
             num_elite = int(0.10 * num_random_action_selection)
-            num_cem_iter = 20
-            curr_state = tf.tile(state_ph, [self._num_random_action_selection, 1])
-            for i in range(num_cem_iter):
-                action_random_sample = tf.clip_by_value(
-                    tf.random_normal(
-                        shape = [num_random_action_selection, self._action_dim],
-                        mean = mean,
-                        stddev = std,
-                        dtype = tf.float32,
-                        name = "action_random_sample_raw"
-                        ),
-                    clip_value_min = self._action_space_low,
-                    clip_value_max = self._action_space_high,
-                    name = "action_random_sample"
-                    )
-                next_state = self._dynamics_func(curr_state, action_random_sample, reuse=True)
-                cost = self._cost_fn(curr_state, action_random_sample, next_state)
+            num_cem_iter = 4
+
+            for j in range(num_cem_iter):
+                curr_state = tf.tile(state_ph, [self._num_random_action_selection, 1])
+                action_random_sample = tf.convert_to_tensor(
+                    [tf.clip_by_value(
+                        tf.random_normal(
+                            shape = [num_random_action_selection, self._action_dim],
+                            mean = mean[ix],
+                            stddev = std[ix],
+                            dtype = tf.float32,
+                            name = "action_random_sample_raw"
+                            ),
+                        clip_value_min = self._action_space_low,
+                        clip_value_max = self._action_space_high,
+                        name = "action_random_sample"
+                    ) for ix in range(self._horizon)])
+                cost = 0
+
+                for i in range(self._horizon):
+                    next_state = self._dynamics_func(curr_state, action_random_sample[i], reuse=True)
+                    cost += self._cost_fn(curr_state, action_random_sample[i], next_state)
+                    curr_state = next_state
 
                 pos_elite = tf.nn.top_k(-cost, k = num_elite, sorted = True)
-                action_elite = tf.gather(action_random_sample, pos_elite.indices)
-                print(action_elite)
+                # print(action_random_sample)
+                # print(action_random_sample)
+                action_elite = tf.gather(action_random_sample, pos_elite.indices, axis = 1)
+                # action_elite = tf.gather(noodle, tf.range(chop_indices[list_idx,0], chop_indices[list_idx,1]))
+                # print(action_elite)
 
                 mean = tf.reduce_mean(action_elite, axis = 0)
                 std = tf.sqrt(tf.reduce_mean(tf.square(action_elite-mean), axis = 0))
-                print(mean)
+                # print(mean)
 
-            best_action = mean
+            best_action = mean[0]
         ### END Solution
 
         return best_action

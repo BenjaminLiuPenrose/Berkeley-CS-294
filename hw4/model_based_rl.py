@@ -40,7 +40,8 @@ class ModelBasedRL(object):
                                         self._random_dataset,
                                         horizon=mpc_horizon,
                                         num_random_action_selection=num_random_action_selection,
-                                        cem=False)
+                                        nn_layers=nn_layers,
+                                        cem=True)
 
         timeit.reset()
         timeit.start('total')
@@ -59,7 +60,7 @@ class ModelBasedRL(object):
                     self._env.render()
                     timeit.stop('render')
                 timeit.start('get action')
-                # print(cnt)
+                print(cnt)
                 cnt+=1
                 action = policy.get_action(state)
                 timeit.stop('get action')
@@ -95,7 +96,7 @@ class ModelBasedRL(object):
             for (states, actions, next_states, _, _) in dataset.random_iterator(self._training_batch_size):
                 loss = self._policy.train_step(states, actions, next_states)
                 losses.append(loss)
-                # print(loss)
+                print(loss)
         ### END Solution
 
         logger.record_tabular('TrainingLossStart', losses[0])
@@ -169,8 +170,8 @@ class ModelBasedRL(object):
         """
         Train the model-based policy on a random dataset, and evaluate the performance of the resulting policy
         """
-        logger.info('Random policy')
-        self._log(self._random_dataset)
+        # logger.info('Random policy')
+        # self._log(self._random_dataset)
 
         logger.info('Training policy....')
         ### PROBLEM 2

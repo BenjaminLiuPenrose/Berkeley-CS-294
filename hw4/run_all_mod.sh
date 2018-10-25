@@ -4,13 +4,13 @@
 ### Q1 ###
 ##########
 
-# py main.py q1 --exp_name exp
+py main.py q1 --exp_name exp
 
 ##########
 ### Q2 ###
 ##########
 
-# py main.py q2 --exp_name exp
+py main.py q2 --exp_name exp
 
 ###########
 ### Q3a ###
