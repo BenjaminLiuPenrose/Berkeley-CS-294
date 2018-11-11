@@ -111,8 +111,7 @@ def build_policy(x, h, output_size, scope, n_layers, size, gru_size, recurrent=T
         x = tf.layers.dense(x, output_size, activation=output_activation, kernel_initializer=tf.initializers.truncated_normal(mean=0.0, stddev=0.01), bias_initializer=tf.zeros_initializer(), name='decoder')
     return x, h
 
-### TO BE
-def build_critic(x, h, output_size, scope, n_layers, size, gru_size, recurrent=False, activation=tf.tanh, output_activation=None, regularizer=None):
+def build_critic(x, h, output_size, scope, n_layers, size, gru_size, recurrent=True, activation=tf.tanh, output_activation=None, regularizer=None):
     """
     build recurrent critic
 
@@ -126,6 +125,7 @@ def build_critic(x, h, output_size, scope, n_layers, size, gru_size, recurrent=F
         if recurrent:
             x, h = build_rnn(x, h, gru_size, scope, n_layers, size, gru_size, activation=activation, output_activation=output_activation, regularizer=regularizer)
         else:
+            x = tf.reshape(x, (-1, x.get_shape()[1]*x.get_shape()[2]))
             x = build_mlp(x, gru_size, scope, n_layers + 1, size, activation=activation, output_activation=activation, regularizer=regularizer)
         x = tf.layers.dense(x, output_size, activation=output_activation, name='decoder', kernel_regularizer=regularizer, bias_regularizer=regularizer)
     return x
@@ -316,7 +316,7 @@ class Agent(object):
 
         # PPO critic update
         critic_regularizer = tf.contrib.layers.l2_regularizer(1e-3) if self.l2reg else None
-        self.critic_prediction = tf.squeeze(build_critic(self.sy_ob_no, self.sy_hidden, 1, 'critic_network', n_layers=self.n_layers, size=self.size, gru_size=self.gru_size, regularizer=critic_regularizer))
+        self.critic_prediction = tf.squeeze(build_critic(self.sy_ob_no, self.sy_hidden, 1, 'critic_network', n_layers=self.n_layers, size=self.size, gru_size=self.gru_size, recurrent=self.recurrent, regularizer=critic_regularizer))
         self.sy_target_n = tf.placeholder(shape=[None], name="critic_target", dtype=tf.float32)
         self.critic_loss = tf.losses.mean_squared_error(self.sy_target_n, self.critic_prediction)
         self.critic_weights = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES, scope='critic_network')
@@ -384,25 +384,24 @@ class Agent(object):
                 ### BEGIN Solution
                 ac, rew, done = np.zeros((1, self.ac_dim)), 0, 0
                 meta_ob = np.concatenate((ob, np.zeros(self.meta_ob_dim - self.ob_dim)))
-                meta_obs[steps] = meta_ob
-
                 steps += 1
+                meta_obs[steps + self.history] = meta_ob
                 ### END Solution
 
             # index into the meta_obs array to get the window that ends with the current timestep
             # YOUR CODE HERE
             ### BEGIN Solution
-            window_sta = steps - self.history
+            window_end = steps + self.history
+            # print(window_end, steps)
+            # print(meta_obs[steps:window_end][None].shape)
             ### END Solution
-
             hidden = np.zeros((1, self.gru_size), dtype=np.float32)
 
             # get action from the policy
             # YOUR CODE HERE
             ### BEGIN Solution
             ## TO BE
-            # hack
-            ac = self.sess.run(self.sy_sampled_ac, feed_dict = {self.sy_ob_no: meta_obs[None, window_sta:steps],
+            ac = self.sess.run(self.sy_sampled_ac, feed_dict = {self.sy_ob_no: meta_obs[steps:window_end][None],
                                                                 self.sy_hidden: hidden})
             ac = ac[0]
             ### END Solution

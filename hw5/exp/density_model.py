@@ -224,16 +224,15 @@ class Exemplar(Density_Model):
         # raise NotImplementedError
         self.log_likelihood = tf.squeeze(
                                         self.discriminator.log_prob(self.discrim_target),
-                                        axis = 2
-                                    )[0]
+                                        axis = 1
+                                    )
         self.likelihood = tf.squeeze(
                                     self.discriminator.prob(self.discrim_target),
-                                    axis = 2
-                                )[0]
+                                    axis = 1
+                                )
         self.kl = tfp.distributions.kl_divergence(self.encoder1, self.prior) + \
                     tfp.distributions.kl_divergence(self.encoder2, self.prior)
-        print(self.log_likelihood.shape)
-        print(self.likelihood.shape)
+
         assert len(self.log_likelihood.shape) == 1
         assert len(self.likelihood.shape) == 1
         assert len(self.kl.shape) == 1
@@ -345,9 +344,9 @@ class Exemplar(Density_Model):
         prior = self.make_prior(self.hid_dim/2)
 
         # Sampled Latent
-        z1 = encoder1.sample(1)
-        z2 = encoder2.sample(1)
-        z = tf.concat([z1, z2], axis = 0)
+        z1 = encoder1.sample() #; print("z1 shape {}".format(z1.shape))
+        z2 = encoder2.sample()
+        z = tf.concat([z1, z2], axis = 1)
 
         # Discriminator
         discriminator = make_discriminator(z, 1, 'discriminator', n_layers=2, hid_size=self.hid_dim)
@@ -374,7 +373,7 @@ class Exemplar(Density_Model):
         assert state1.shape[0] == state2.shape[0] == target.shape[0]
         # raise NotImplementedError
         ### BEGIN Solution
-        ll, kl, elbo = self.sess.run([self.log_likelihood, self.kl, self.elbo],
+        _, ll, kl, elbo = self.sess.run([self.update_op, self.log_likelihood, self.kl, self.elbo],
                                         feed_dict={
                                             self.state1: state1,
                                             self.state2: state2,
@@ -401,12 +400,14 @@ class Exemplar(Density_Model):
         assert state1.ndim == state2.ndim
         assert state1.shape[1] == state2.shape[1] == self.ob_dim
         assert state1.shape[0] == state2.shape[0]
+        target = np.array([(s1==s2).all() for s1, s2 in zip(state1, state2)])
+        target = target.reshape((target.shape[0], 1))
         # raise NotImplementedError
         likelihood = self.sess.run(self.likelihood,
                                     feed_dict={
                                         self.state1: state1,
                                         self.state2: state2,
-                                        self.discrim_target: state2[:, 0]==state1[:, 0]
+                                        self.discrim_target: target
                                     })
         return likelihood
 
@@ -426,7 +427,7 @@ class Exemplar(Density_Model):
                     likelihood (see homework doc)
         """
         likelihood = self.get_likelihood(state, state)
-        # avoid divide by 0 and log(0)
+        # avoid divide by 0 and log(0) in bonus function
         likelihood = np.clip(np.squeeze(likelihood), 1e-5, 1-1e-5)
         prob = (1-likelihood)/likelihood
         return prob

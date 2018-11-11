@@ -201,6 +201,8 @@ class ModelBasedPolicy(object):
 
             best_action = action_random_sample[0][tf.argmin(cost)]
         else:
+            ### Assume no covariance
+            ### can be extended to only nearby cov or full cov
             mean, std = np.zeros(self._horizon), np.ones(self._horizon)
             num_random_action_selection = self._num_random_action_selection
             num_elite = int(0.10 * num_random_action_selection)

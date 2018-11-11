@@ -647,7 +647,7 @@ def main():
 
     processes = []
 
-    for e in range(1): # args.n_experiments
+    for e in range(args.n_experiments): #
         seed = args.seed + 10*e
         print('Running experiment with seed %d'%seed)
 
