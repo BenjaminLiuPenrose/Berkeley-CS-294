@@ -6,6 +6,7 @@
 
 py train_ac_exploration_f18.py PointMass-v0 -n 100 -b 1000 -e 3 --density_model none -s 8 --exp_name PM_bc0_s8
 py train_ac_exploration_f18.py PointMass-v0 -n 100 -b 1000 -e 3 --density_model hist -bc 0.01 -s 8 --exp_name PM_hist_bc0.01_s8
+
 py plot.py data/ac_PM_bc0_s8_PointMass-v0_07-11-2018_22-48-12 data/ac_PM_hist_bc0.01_s8_PointMass-v0_07-11-2018_22-49-59 --value AverageReturn
 
 ##########################
@@ -13,6 +14,7 @@ py plot.py data/ac_PM_bc0_s8_PointMass-v0_07-11-2018_22-48-12 data/ac_PM_hist_bc
 ##########################
 
 py train_ac_exploration_f18.py PointMass-v0 -n 100 -b 1000 -e 3 --density_model rbf -bc 0.01 -s 8 -sig 0.2 --exp_name PM_rbf_bc0.01_s8_sig0.2
+
 py plot.py data/ac_PM_bc0_s8_PointMass-v0_07-11-2018_22-48-12 data/ac_PM_rbf_bc0.01_s8_sig0.2_PointMass-v0_07-11-2018_22-54-41 --value AverageReturn
 
 ##########################
@@ -20,6 +22,7 @@ py plot.py data/ac_PM_bc0_s8_PointMass-v0_07-11-2018_22-48-12 data/ac_PM_rbf_bc0
 ##########################
 
 py train_ac_exploration_f18.py PointMass-v0 -n 100 -b 1000 -e 3 --density_model ex2 -s 8 -bc 0.05 -kl 0.1 -dlr 0.001 -dh 8 --exp_name PM_ex2_s8_bc0.05_kl0.1_dlr0.001_dh8
+
 py plot.py data/ac_PM_bc0_s8_PointMass-v0_07-11-2018_22-48-12 data/ac_PM_ex2_s8_bc0.05_kl0.1_dlr0.001_dh8_PointMass-v0_08-11-2018_00-35-55 --value AverageReturn
 
 ###########################

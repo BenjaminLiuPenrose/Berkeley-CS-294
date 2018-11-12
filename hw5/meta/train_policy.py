@@ -57,10 +57,14 @@ def build_mlp(x, output_size, scope, n_layers, size, activation=tf.tanh, output_
     x = tf.layers.dense(inputs=x, units=output_size, activation=output_activation, name='fc{}'.format(i + 1), kernel_regularizer=regularizer, bias_regularizer=regularizer)
     return x
 
-def build_rnn(x, h, output_size, scope, n_layers, size, gru_size, activation=tf.tanh, output_activation=None, regularizer=None):
+def build_rnn(x, h, output_size, scope, n_layers, size, activation=tf.tanh, output_activation=None, regularizer=None):
     """
     builds a gated recurrent neural network
     inputs are first embedded by an MLP then passed to a GRU cell
+
+    make MLP layers with `size` number of units
+    make the GRU with `output_size` number of units
+    use `activation` as the activation function for both MLP and GRU
 
     arguments:
         (see `build_policy()`)
@@ -78,7 +82,6 @@ def build_rnn(x, h, output_size, scope, n_layers, size, gru_size, activation=tf.
     # initial_state = rnn_cell.zero_state(batch_size, dtype=tf.float32)
     x, h = tf.nn.dynamic_rnn(rnn_cell, x, initial_state=h)
     ### END Solution
-
 
 def build_policy(x, h, output_size, scope, n_layers, size, gru_size, recurrent=True, activation=tf.tanh, output_activation=None):
     """
@@ -104,7 +107,7 @@ def build_policy(x, h, output_size, scope, n_layers, size, gru_size, recurrent=T
     """
     with tf.variable_scope(scope, reuse=tf.AUTO_REUSE):
         if recurrent:
-            x, h = build_rnn(x, h, gru_size, scope, n_layers, size, gru_size, activation=activation, output_activation=output_activation)
+            x, h = build_rnn(x, h, gru_size, scope, n_layers, size, activation=activation, output_activation=activation)
         else:
             x = tf.reshape(x, (-1, x.get_shape()[1]*x.get_shape()[2]))
             x = build_mlp(x, gru_size, scope, n_layers + 1, size, activation=activation, output_activation=activation)
@@ -123,7 +126,7 @@ def build_critic(x, h, output_size, scope, n_layers, size, gru_size, recurrent=T
     """
     with tf.variable_scope(scope, reuse=tf.AUTO_REUSE):
         if recurrent:
-            x, h = build_rnn(x, h, gru_size, scope, n_layers, size, gru_size, activation=activation, output_activation=output_activation, regularizer=regularizer)
+            x, h = build_rnn(x, h, gru_size, scope, n_layers, size, activation=activation, output_activation=output_activation, regularizer=regularizer)
         else:
             x = tf.reshape(x, (-1, x.get_shape()[1]*x.get_shape()[2]))
             x = build_mlp(x, gru_size, scope, n_layers + 1, size, activation=activation, output_activation=activation, regularizer=regularizer)
@@ -362,7 +365,7 @@ class Agent(object):
         env.reset_task(is_evaluation=is_evaluation)
         stats = []
         #====================================================================================#
-        #                           ----------PROBLEM 2----------
+        #                           ----------PROBLEM 1----------
         #====================================================================================#
         ep_steps = 0
         steps = 0
@@ -389,12 +392,14 @@ class Agent(object):
                 ### END Solution
 
             # index into the meta_obs array to get the window that ends with the current timestep
+            # please name the windowed observation `in_` for compatibilty with the code that adds to the replay buffer (lines 418, 420)
             # YOUR CODE HERE
             ### BEGIN Solution
             window_end = steps + self.history
             # print(window_end, steps)
             # print(meta_obs[steps:window_end][None].shape)
             ### END Solution
+
             hidden = np.zeros((1, self.gru_size), dtype=np.float32)
 
             # get action from the policy
@@ -405,6 +410,7 @@ class Agent(object):
                                                                 self.sy_hidden: hidden})
             ac = ac[0]
             ### END Solution
+
 
             # step the environment
             # YOUR CODE HERE
@@ -720,8 +726,11 @@ def train_PG(
 
         # sample trajectories to fill agent's replay buffer
         print("********** Iteration %i ************"%itr)
-        stats, timesteps_this_batch = agent.sample_trajectories(itr, env, min_timesteps_per_batch)
-        total_timesteps += timesteps_this_batch
+        stats = []
+        for _ in range(num_tasks):
+            s, timesteps_this_batch = agent.sample_trajectories(itr, env, min_timesteps_per_batch)
+            total_timesteps += timesteps_this_batch
+            stats += s
 
         # compute the log probs, advantages, and returns for all data in agent's buffer
         # store in ppo buffer for use in multiple ppo updates
@@ -746,13 +755,15 @@ def train_PG(
 
             log_probs = agent.sess.run(agent.sy_lp_n,
                 feed_dict={agent.sy_ob_no: ob_no, agent.sy_hidden: hidden, agent.sy_ac_na: ac_na})
-            # print('new log prob', log_probs.shape)
 
             agent.update_parameters(ob_no, hidden, ac_na, fixed_log_probs, q_n, adv_n)
 
         # compute validation statistics
         print('Validating...')
-        val_stats, timesteps_this_batch = agent.sample_trajectories(itr, env, min_timesteps_per_batch // 10, is_evaluation=True)
+        val_stats = []
+        for _ in range(num_tasks):
+            vs, timesteps_this_batch = agent.sample_trajectories(itr, env, min_timesteps_per_batch // 10, is_evaluation=True)
+            val_stats += vs
 
         # save trajectories for viz
         with open("output/{}-epoch{}.pkl".format(exp_name, itr), 'wb') as f:
