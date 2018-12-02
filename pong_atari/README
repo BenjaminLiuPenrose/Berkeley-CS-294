@@ -1,0 +1,53 @@
+[Benjamin Liu@UC Berkeley]
+[3034330004]
+[2018-8-25]
+
+Section 1:  File System hw3
+run_dqn_atari.py
+run_dqn_ram.py
+run_dqn_lander.py
+train_ac_f18.py	-- the main file provided by GSI and modified according to homework instructions
+actorcritic.bash    -- code for actorcritic
+data/... data for actor-critic
+e2280cda-0d75-434d-a8c1-48cbf4a5c9e6.pkl gamma=0.97
+a4f9e8cc-2899-4c39-97bd-a736bed405c9.pkl gamma=0.8
+3273814b-86e0-43f6-87ce-ee998ac1a127.pkl gamma=0.95
+831956ba-f763-43ce-865a-d7972057378b.pkl gamma=0.9
+621fec30-080c-47d8-b7af-5538d72fe4a7.pkl double_q
+17c07108-dca9-4e76-9a4d-616508b76be6.pkl dqn
+... other files can be ignored
+
+
+Section 2: Requirements and Running Environment
+Windows 10 64-bit
+Python 3.6 64-bit
+mujoco150
+gym==0.10.5
+mujoco-py==1.50.1.56
+tensorflow==1.5
+numpy
+seaborn
+Box2D==2.3.2
+tensorflow_probability
+opencv-python
+gym[atari]
+recommend (personally) using sublime text 3 to view/edit code
+
+
+Section 3: Steps:
+1) DQN - Question 1 - basic Q-learning performance
+    python run_dqn_atari.py
+2) Question 2 - double Q-learning
+    python run_dqn_atari.py (change param in file run_dqn_atari.py double_q to True)
+3) Question 3 - experimenting with hyperparamsters
+    python run_dqn_atari.py (change param gamma in file run_dqn_atari.py gamma to different values)
+4) AC - Question 1 - Sanity check with Cartpole
+    sh actorcritic.bash
+5) Question 2 - Run actor-critic with more difficult tasks
+    sh actorcritic.bash
+
+6) read report files - file start with 3034330004 [.pdf][.html][.md]
+optional) run the main program by
+	python run_dqn_atari.py ...
+    python run_dqn_ram.py ...
+	python train_ac_f18.py ...
